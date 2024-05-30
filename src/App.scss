@@ -1,0 +1,27 @@
+$color-primary: rgb(226, 23, 97); //SÓ PRECISA MUDAR ESSA COR PRA MUDAR O RESTO NO CÓDIGO
+$color-secondary: rgb(79, 40, 63);
+
+.bg-primary{
+    background-color: $color-primary!important;
+}
+
+.text-primary { // TODAS AS CORES DOS LINKS
+    color:$color-primary !important;
+}
+
+a.text-primary:hover{
+    color: $color-secondary !important;
+}
+
+.btn-primary {
+    background-color: $color-primary !important;
+    border-color: $color-primary !important;
+}
+
+.btn-primary:hover{
+    background-color: $color-secondary !important;
+    border-color: $color-secondary !important;
+}
+
+
+
