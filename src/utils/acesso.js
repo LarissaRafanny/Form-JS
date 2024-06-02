@@ -1,7 +1,10 @@
 export function login(email, senha, checked, setUsuarioLogado){
     const dados = {email, senha}
-    setUsuarioLogado(dados)
 
+    //TODO: Verificar se o email e a senha existem e se são válidas
+    //se for válida: setUsuarioLogado({usuario})
+    //se não for válida: alert("Usuario não encontrado")
+   
     sessionStorage.setItem("usuarioLogado", JSON.stringify(dados))
     if (checked){
         localStorage.setItem("usuarioLogado", JSON.stringify(dados))

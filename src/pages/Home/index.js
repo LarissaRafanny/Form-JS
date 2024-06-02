@@ -2,29 +2,31 @@ import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Table from "../../components/Table";
-import { listarCasas } from "../../services/api";
+import { useCasas } from "../../hooks/useCasas";
 
 
 function Home() {
-    const [casasApi, setCasasApi] = useState([]);
+    const casasApi = useCasas([]);
     const [casas, setCasas] = useState([]);
     const [busca, setBusca] = useState("");
 
     useEffect(() => {
-        listarCasas();
-        const casasFiltradas = CASAS.filter((casa) => casa.endereco.toLowerCase().includes(busca.toLowerCase()));
+
+        const casasFiltradas = casasApi.filter((casa) => casa.endereco.toLowerCase().includes(busca.toLowerCase()))
         setCasas(casasFiltradas)
-    }, [busca])
+    }, [busca, casasApi])
     return (
         <>
-            <Header busca={busca} setBusca={setBusca}/>
-            <div className="container-fluid mt-2">
+            <Header busca={busca} setBusca={setBusca} />
+            <div className="container-fluid mt-2 ml-4" id="painel">
                 <h1> Avaliação de Imóveis</h1>
+
+                <Table 
+                    titulo={"Casas Cadastradas"}
+                    linhas={casas}
+                    colunas={["ID", "Endereço", "Quartos", "Banheiros", "Vagas Garagem", " "]}
+                />
             </div>
-            <Table titulo={"Imóveis Cadastrados"}
-                linhas={casas}
-                colunas={["ID", "Endereço", "Quartos", "Banheiros", "Vagas Garagem", " "]}
-            />
             <Footer />
         </>
     )
